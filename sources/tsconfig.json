@@ -1,17 +1,9 @@
 {
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "strict": true,
     "jsx": "react-jsx",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
     "sourceMap": true,
-    "downlevelIteration": true,
     "lib": ["esnext", "dom", "dom.iterable"]
   },
   "exclude": ["node_modules", "dist", "modules"]

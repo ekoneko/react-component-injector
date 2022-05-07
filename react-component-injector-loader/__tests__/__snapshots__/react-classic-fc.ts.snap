@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsx-runtime wrap 1`] = `
+"import { reactComponentInjector } from \\"react-component-injector\\";
+import React from 'react';
+
+var Breadcrumb = function (_a) {
+  return React.createElement(StyleWrapper, {
+    className: className
+  }, React.createElement(StyleContainer, null, items.map(function (item, index) {
+    if (index !== 0 && index < hiddenCount + 1) {
+      return null;
+    }
+
+    return React.createElement(StyleItem, {
+      key: index
+    }, React.createElement(StyleText, {
+      onClick: createHandleClick(index),
+      width: index < collapsedCount ? collapsedWidthPx + \\"px\\" : undefined
+    }, item), React.createElement(StyleArrowWrapper, null, arrowIcon !== null && arrowIcon !== void 0 ? arrowIcon : React.createElement(StyleArrow, null)));
+  })), React.createElement(StyleHiddenContainer, {
+    ref: hiddenContainerRef
+  }, items.map(function (item, index) {
+    return React.createElement(StyleItem, {
+      key: index
+    }, React.createElement(StyleText, null, item), React.createElement(StyleArrow, null));
+  })));
+};
+
+var $$WrappedBreadcrumb = reactComponentInjector.proxy(\\"/path/to/component.tsx#Breadcrumb\\", Breadcrumb);
+export { $$WrappedBreadcrumb as Breadcrumb };"
+`;

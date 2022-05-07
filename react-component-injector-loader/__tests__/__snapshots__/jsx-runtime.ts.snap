@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsx-runtime 1`] = `
+"import { jsx as _jsx } from \\"react/jsx-runtime\\";
+import { reactComponentInjector } from \\"react-component-injector\\";
+const a = 'test';
+
+var A = function () {
+  var a = 'xxx';
+  return _jsx(\\"span\\", {
+    children: \\"Hello\\"
+  });
+};
+
+var $$WrappedA = reactComponentInjector.proxy(\\"/path/to/component.tsx#A\\", A);
+export { $$WrappedA as A };
+
+var B = function () {
+  return _jsx(\\"span\\", {
+    children: \\"World\\"
+  });
+};
+
+var WrappedB = reactComponentInjector.define(\\"src/ComponentB#B\\", B);
+export { WrappedB as B };"
+`;
+
+exports[`jsx-runtime wrap 1`] = `undefined`;

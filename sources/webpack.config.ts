@@ -4,6 +4,7 @@ import type { Configuration as DevServerConfiguration } from 'webpack-dev-server
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
+import md5 from 'md5'
 
 const config: Configuration & { devServer: DevServerConfiguration } = {
   mode: "production",
@@ -17,9 +18,29 @@ const config: Configuration & { devServer: DevServerConfiguration } = {
       {
         test: /\.tsx?$/,
         use: [{
-          loader: require.resolve('react-component-injector-loader')
+          loader: require.resolve('react-component-injector-loader'),
+          options: {
+            encrypt: (p: string) => md5(p)
+          }
         }, {
           loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+            compilerOptions: {
+              "jsx": "react-jsx",
+              "module": "ESNext",
+              "sourceMap": true,
+              "lib": ["esnext", "dom", "dom.iterable"],
+              "target": "es5",
+              "importHelpers": true,
+              "moduleResolution": "node",
+              "experimentalDecorators": true,
+              "resolveJsonModule": true,
+              "esModuleInterop": true,
+              "allowSyntheticDefaultImports": true,
+              "downlevelIteration": true,
+            }
+          }
         }],
         include: [
           path.resolve(__dirname, "src")

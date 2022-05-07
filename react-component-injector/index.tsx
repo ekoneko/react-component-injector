@@ -1,4 +1,5 @@
 import React from "react";
+import md5 from "md5";
 
 interface InjectedOptions<P = any> {
   originComponentType: React.ComponentType<P>;
@@ -12,11 +13,9 @@ class ReactComponentInjector {
   injectedComponentsMap: Record<string, InjectedFn> = {};
 
   proxy<P extends object>(
-    path: string,
+    key: string,
     OriginComponentType: React.ComponentType<P>
   ) {
-    const key = this.encryptPath(path);
-
     const Wrapped: React.FC<P> = (props) => {
       const injectedFn = this.injectedComponentsMap[key];
       const ComponentType =
@@ -36,8 +35,8 @@ class ReactComponentInjector {
   }
 
   private encryptPath(key: string) {
-    // TODO
-    return key;
+    // NOTE: use same way as loader
+    return md5(key);
   }
 }
 export const reactComponentInjector = new ReactComponentInjector();
